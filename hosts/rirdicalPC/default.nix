@@ -5,8 +5,8 @@
     [ 
       ./hardware-configuration.nix
       inputs.noctalia.nixosModules.default
-      ../../modules/nixos
       ../../misc/happ-nixos/happ-module.nix
+      ../common/base.nix
     ];
 
   # Bootloader configuration and kernel

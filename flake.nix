@@ -11,32 +11,73 @@
     # Noctalia V5
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # 3D fetch
-    areofyl-fetch.url = "github:areofyl/fetch";
+    areofyl-fetch = {
+      url = "github:areofyl/fetch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # NVF
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nvf, ... }@inputs:
   let
-    system = "x86_64-linux";
-  in
+    mkHost = {
+      hostname,
+      homehost,
+      user,
+      system,
+    }:
+    nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit inputs; };
+
+      modules = [
+        ./hosts/${hostname}
+
+	# Home manager
+	home-manager.nixosModules.home-manager
+	{
+	  home-manager.useGlobalPkgs = true;
+	  home-manager.useUserPackages = true;
+	  home-manager.backupFileExtension = "hm-back";
+          home-manager.overwriteBackup = true;
+	  home-manager.extraSpecialArgs = {
+	    inherit inputs hostname;
+	  };
+	  home-manager.users = {
+	    "${user}" = import homeHost;
+	  };
+	}
+      ];
+    };
+  in 
   {
     nixosConfigurations = {
-      rirdicalPC = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/rirdicalPC
-	  home-manager.nixosModules.home-manager
-	  {
-	    home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
-	    home-manager.extraSpecialArgs = { inherit inputs; };
-	    home-manager.users.rirdical = import ./users/rirdical/home.nix;
-	  }
-        ];
+      PC = mkHost {
+        hostname = "rirdicalPC";
+	homehost = "./home/hosts/rirdicalPC.nix";
+	user = "rirdical";
+	system = "x86_64-linux";
       };
+      LT = mkHost {
+        hostname = "rirdicalLT";
+	homehost = "./home/host/rirdicalLT.nix";
+	user = "rirdical";
+	system = "x86_64-linux";
+      };
+      VR = mkHost {
+        hostname = "rirdicalVR";
+	homehost = "./home/host/rirdicalVR.nix";
+	user = "rirdical";
+	system = "aarch64-linux";
     };
   };
 }
