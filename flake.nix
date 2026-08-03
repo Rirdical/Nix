@@ -78,6 +78,7 @@
 	homehost = "./home/host/rirdicalVR.nix";
 	user = "rirdical";
 	system = "aarch64-linux";
+      };
     };
   };
 }
