@@ -53,7 +53,7 @@
 	    inherit inputs hostname;
 	  };
 	  home-manager.users = {
-	    "${user}" = import homeHost;
+	    "${user}" = import homehost;
 	  };
 	}
       ];
