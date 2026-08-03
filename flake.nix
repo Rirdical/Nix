@@ -63,19 +63,19 @@
     nixosConfigurations = {
       PC = mkHost {
         hostname = "rirdicalPC";
-	homehost = "./home/hosts/rirdicalPC.nix";
+	homehost = ./home/hosts/rirdicalPC.nix;
 	user = "rirdical";
 	system = "x86_64-linux";
       };
       LT = mkHost {
         hostname = "rirdicalLT";
-	homehost = "./home/host/rirdicalLT.nix";
+	homehost = ./home/host/rirdicalLT.nix;
 	user = "rirdical";
 	system = "x86_64-linux";
       };
       VR = mkHost {
         hostname = "rirdicalVR";
-	homehost = "./home/host/rirdicalVR.nix";
+	homehost = ./home/host/rirdicalVR.nix;
 	user = "rirdical";
 	system = "aarch64-linux";
       };
