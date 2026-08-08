@@ -12,4 +12,9 @@
   home.packages = with pkgs; [ htop git ];
   programs.git.enable = true;
   programs.home-manager.enable = true;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    TERMINAL = "ghostty";
+  };
 }

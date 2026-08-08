@@ -49,11 +49,13 @@
     recommendedServices.enable = true;
   };
   services.happ.enable = true;
+
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
+
   programs.starship.enable = true;
   users.defaultUserShell = pkgs.zsh;
   programs.steam.enable = true;
@@ -64,10 +66,7 @@
     wget
     git
     firefox
-    kitty
     vivaldi
-    stow
-    yazi
     xwayland-satellite
     webcord
     amnezia-vpn
@@ -97,6 +96,9 @@
     adw-gtk3
     obsidian
     discord
+    btop
+    gdu
+    eog
   ];
 
   # Fix for Dolphin open with
@@ -111,12 +113,14 @@
   security.polkit.enable = true;
 
   programs.xwayland.enable = true;
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
   };
+
   programs.niri.enable = true;
-  # programs.yazi.enable = true;
+  programs.yazi.enable = true;
 
   services.displayManager.ly.enable = true;
 
