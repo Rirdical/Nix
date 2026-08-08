@@ -1,5 +1,9 @@
-{ config, inputs, pkgs, ... }:
-let
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: let
   pkgsUnstable = import inputs.nixpkgs-unstable {
     system = pkgs.stdenv.hostPlatform.system;
     config = {
@@ -7,12 +11,10 @@ let
       allowUnsupportedSystem = true;
     };
   };
-in
-{
+in {
   imports = [
     ./optimisations.nix
     ./audiofix.nix
-    ./nvf.nix
   ];
 
   # -------- basics --------
@@ -34,7 +36,7 @@ in
   networking.networkmanager.enable = true;
   networking.firewall.checkReversePath = false;
 
-/*
+  /*
    nixpkgs.overlays = [
      (final: prev: {
        atopile = prev.writeShellScriptBin "atopile" ''
@@ -53,13 +55,12 @@ in
       };
     };
   };
-*/
+  */
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "exfat" ];
-
+  boot.supportedFilesystems = ["exfat"];
 
   services.printing.enable = true;
   services.upower.enable = true;
@@ -92,7 +93,6 @@ in
   programs.xwayland.enable = true;
   programs.niri.enable = true; # Niri session in the display manager
 
-
   nixpkgs.config.allowUnfree = true;
 
   # Graphics (26.05 uses hardware.graphics.*)
@@ -101,14 +101,12 @@ in
   };
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
     warn-dirty = false;
 
     # Only local admins should be able to submit builds to the daemon.
-    allowed-users = [ "@wheel" ];
+    allowed-users = ["@wheel"];
   };
-
-
 
   environment.systemPackages = with pkgs; [
     exfatprogs

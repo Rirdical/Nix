@@ -67,9 +67,9 @@
       
       # 🔧 Utility Plugins
       telescope.enable = true;        # Fuzzy finder
-      whichKey.enable = true;         # Keybinding hints
-      comment-nvim.enable = true;     # Easy commenting
-      nvim-autopairs.enable = true;   # Auto close brackets/quotes
+      binds.whichKey.enable = true;         # Keybinding hints
+      comments.comment-nvim.enable = true;     # Easy commenting
+      autopairs.nvim-autopairs.enable = true;   # Auto close brackets/quotes
       
       # 🗂️ File Explorer
       filetree = {
