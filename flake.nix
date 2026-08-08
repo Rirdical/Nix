@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     # Home manager module
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -41,6 +42,7 @@
 
       modules = [
         ./hosts/${hostname}
+	nvf.nixosModules.default
 
 	# Home manager
 	home-manager.nixosModules.home-manager

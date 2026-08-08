@@ -12,6 +12,7 @@ in
   imports = [
     ./optimisations.nix
     ./audiofix.nix
+    ./nvf.nix
   ];
 
   # -------- basics --------

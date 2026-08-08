@@ -51,7 +51,6 @@
   services.happ.enable = true;
   programs.zsh = {
     enable = true;
-
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
@@ -96,6 +95,8 @@
     kdePackages.ark
     nwg-look
     adw-gtk3
+    obsidian
+    discord
   ];
 
   # Fix for Dolphin open with
