@@ -1,13 +1,16 @@
-{ config, lib, pkgs, inputs, ... }:
-
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      inputs.noctalia.nixosModules.default
-      ../../misc/happ-nixos/happ-module.nix
-      ../common/base.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    inputs.noctalia.nixosModules.default
+    ../../misc/happ-nixos/happ-module.nix
+    ../common/base.nix
+  ];
 
   # Bootloader configuration and kernel
   boot.loader.systemd-boot.enable = true;
@@ -15,16 +18,23 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking
-  networking.nameservers = [ "94.140.14.14" "9.9.9.9" ]; # AdGuard and Quad9
+  networking.nameservers = ["94.140.14.14" "9.9.9.9"]; # AdGuard and Quad9
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-  networking.networkmanager.unmanaged = [ "tun0" ];
+  networking.networkmanager.unmanaged = ["tun0"];
   networking.hostName = "rirdicalPC"; # Define your hostname.
   networking.networkmanager.enable = true;
   networking.firewall = {
     enable = false;
-    trustedInterfaces = [ "tun0" ];
+    trustedInterfaces = ["tun0"];
   };
 
+  #
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/rirdical/.nix/";
+  };
   # Set your time zone.
   time.timeZone = "Europe/Samara";
 
@@ -40,7 +50,7 @@
   # home.homeDirectory = "/home/rirdical";
   users.users.rirdical = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "networkmanager" "audio" "video"]; # Enable ‘sudo’ for the user.
   };
 
   # Apps
@@ -99,13 +109,15 @@
     btop
     gdu
     eog
+    fzf
+    zoxide
   ];
 
   # Fix for Dolphin open with
   xdg.menus.enable = true;
   xdg.mime.enable = true;
-  environment.etc."/xdg/menus/applications.menu".text = 
-  builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+  environment.etc."/xdg/menus/applications.menu".text =
+    builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   environment.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt6ct";
@@ -126,8 +138,7 @@
 
   # Nix settings
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features  = [ "nix-command" "flakes" ];
-
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # home-manager = {
   #  extraSpecialArgs = { inherit inputs; };
@@ -137,6 +148,4 @@
   # };
 
   system.stateVersion = "26.05"; # Did you read the comment?
-
 }
-
