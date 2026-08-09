@@ -34,7 +34,7 @@ in {
   };
 
   networking.networkmanager.enable = true;
-  networking.firewall.checkReversePath = false;
+  # networking.firewall.checkReversePath = false;
 
   /*
    nixpkgs.overlays = [
@@ -71,7 +71,7 @@ in {
 
   users.users.rirdical = {
     isNormalUser = true;
-    description = "luix";
+    description = "";
     extraGroups = [
       "networkmanager"
       "wheel"

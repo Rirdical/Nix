@@ -4,6 +4,8 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ../../misc/happ-nixos/happ-module.nix
+      ../common/base.nix
     ];
 
   # Bootloader.
@@ -24,7 +26,8 @@
   services.fprintd.enable = true;
   services.desktopManager.gnome.sessionPath = [ pkgs.gdm ];
   security.pam.services.sudo.fprintAuth = true;
-
+  
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   # Set your time zone.
   time.timeZone = "Europe/Samara";
 
@@ -79,13 +82,6 @@
   services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."rirdical" = {
-    isNormalUser = true;
-    description = "Rirdical";
-    extraGroups = [ "networkmanager" "wheel" "inputs" ];
-    packages = with pkgs; [
-    ];
-  };
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -93,8 +89,22 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Apps
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+
+  services.happ.enable = true;
+  programs.starship.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    lazygit
+    nextcloud-client
+    fzf
+    zoxide
     neovim
     yazi
     wget
@@ -102,6 +112,9 @@
     vivaldi # S Tier Browser
     btop
     git
+    qt6Packages.qt6ct
+    libsForQt5.qt5ct
+    nwg-look
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
