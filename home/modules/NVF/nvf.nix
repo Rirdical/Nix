@@ -6,14 +6,24 @@
     enable = true;
 
     settings.vim = {
-      # ── Aliases ──
+      # ═══════════════════════════════════════════════════════════════
+      # 0. VENDORED KEYMAPS — Disable NVF defaults to avoid conflicts
+      # ═══════════════════════════════════════════════════════════════
+      vendoredKeymaps.enable = false;
+
+      # ═══════════════════════════════════════════════════════════════
+      # 1. CORE IDENTITY
+      # ═══════════════════════════════════════════════════════════════
       viAlias = true;
       vimAlias = true;
+      globals = {
+        mapleader = " ";
+        editorconfig = true;
+      };
 
-      # ── Leader ──
-      globals.mapleader = " ";
-
-      # ── Core Editor Options ──
+      # ═══════════════════════════════════════════════════════════════
+      # 2. EDITOR OPTIONS
+      # ═══════════════════════════════════════════════════════════════
       options = {
         number = true;
         relativenumber = true;
@@ -28,29 +38,49 @@
         laststatus = 3;
         wrap = false;
         scrolloff = 10;
+        sidescrolloff = 8;
         ignorecase = true;
         smartcase = true;
         incsearch = true;
         hidden = true;
         undofile = true;
         swapfile = false;
+        backup = false;
+        writebackup = false;
         updatetime = 250;
         timeoutlen = 300;
         splitbelow = true;
         splitright = true;
         clipboard = "unnamedplus";
         mouse = "a";
+        completeopt = "menu,menuone,noselect";
+        pumheight = 10;
+        showmode = false;
+        fillchars = "eob: ";
+        shada = "!,'100,<50,s10,h";
       };
 
-      # ── Theme ──
+      # ═══════════════════════════════════════════════════════════════
+      # 3. THEME & VISUALS
+      # ═══════════════════════════════════════════════════════════════
       theme = {
         enable = true;
         name = "tokyonight";
         style = "night";
-        transparent = true;
+        transparent = false;
       };
 
-      # ── Statusline ──
+      visuals = {
+        nvim-web-devicons.enable = true;
+        nvim-cursorline.enable = true;
+        fidget-nvim.enable = true;
+        highlight-undo.enable = true;
+        rainbow-delimiters.enable = true;
+      };
+
+      # ═══════════════════════════════════════════════════════════════
+      # 4. STATUSLINE & TABLINE
+      # ═══════════════════════════════════════════════════════════════
       statusline = {
         lualine = {
           enable = true;
@@ -58,32 +88,47 @@
         };
       };
 
-      # ── Tabline (Buffer Tabs) ──
       tabline.nvimBufferline.enable = true;
 
-      # ── File Tree ──
+      # ═══════════════════════════════════════════════════════════════
+      # 5. FILE MANAGEMENT
+      # ═══════════════════════════════════════════════════════════════
       filetree.neo-tree.enable = true;
+      mini.files.enable = true;
+      utility.oil-nvim.enable = true;
 
-      # ── Fuzzy Finder ──
+      # ═══════════════════════════════════════════════════════════════
+      # 6. FUZZY FINDING
+      # ═══════════════════════════════════════════════════════════════
       telescope.enable = true;
 
-      # ── Syntax & Parsing ──
+      # ═══════════════════════════════════════════════════════════════
+      # 7. TREESITTER
+      # ═══════════════════════════════════════════════════════════════
       treesitter = {
         enable = true;
         context.enable = true;
       };
 
-      # ── LSP ──
+      # ═══════════════════════════════════════════════════════════════
+      # 8. LSP & INTELLIGENCE
+      # ═══════════════════════════════════════════════════════════════
       lsp = {
         enable = true;
-        formatOnSave = true;
+        formatOnSave = false;
         lspkind.enable = true;
         lightbulb.enable = true;
         trouble.enable = true;
-        lspSignature.enable = false; # blink-cmp handles this
+        lspSignature.enable = false;
+        inlayHints.enable = true;
       };
 
-      # ── Autocomplete ──
+      # Modern formatting engine
+      formatter.conform-nvim.enable = true;
+
+      # ═══════════════════════════════════════════════════════════════
+      # 9. AUTOCOMPLETE
+      # ═══════════════════════════════════════════════════════════════
       autocomplete = {
         blink-cmp = {
           enable = true;
@@ -94,7 +139,9 @@
 
       snippets.luasnip.enable = true;
 
-      # ── Diagnostics ──
+      # ═══════════════════════════════════════════════════════════════
+      # 10. DIAGNOSTICS
+      # ═══════════════════════════════════════════════════════════════
       diagnostics = {
         enable = true;
         config = {
@@ -102,59 +149,92 @@
           underline = true;
           signs = true;
           update_in_insert = false;
+          severity_sort = true;
+          float = {
+            border = "rounded";
+            source = "if_many";
+          };
         };
       };
 
-      # ── Git ──
+      # ═══════════════════════════════════════════════════════════════
+      # 11. GIT
+      # ═══════════════════════════════════════════════════════════════
       git = {
         enable = true;
         gitsigns.enable = true;
       };
 
-      # ── Keybind Discovery ──
-      binds.whichKey.enable = true;
+      # ═══════════════════════════════════════════════════════════════
+      # 12. KEYBIND DISCOVERY
+      # ═══════════════════════════════════════════════════════════════
+      binds = {
+        whichKey.enable = true;
+        cheatsheet.enable = true;
+      };
 
-      # ── Auto-pairs ──
-      autopairs.nvim-autopairs.enable = true;
+      # ═══════════════════════════════════════════════════════════════
+      # 13. MINI.ECOSYSTEM — All confirmed in NVF 26.12 release notes
+      # ═══════════════════════════════════════════════════════════════
+      mini = {
+        ai.enable = true;
+        surround.enable = true;
+        pairs.enable = true;
+        comment.enable = true;
+        move.enable = true;
+        splitjoin.enable = true;
+        align.enable = true;
+        operators.enable = true;
+        bracketed.enable = true;
+        trailspace.enable = true;
+        indentscope.enable = true;
+        jump.enable = true;
+        jump2d.enable = true;
+        hipatterns.enable = true;
+        sessions.enable = true;
+        starter.enable = true;
+      };
 
-      # ── Comments ──
-      comments.comment-nvim.enable = true;
+      # ═══════════════════════════════════════════════════════════════
+      # 14. MOTION — flash.nvim (replaces hop + leap)
+      # ═══════════════════════════════════════════════════════════════
+      utility.motion.flash-nvim.enable = true;
 
-      # ── Better UI ──
+      # ═══════════════════════════════════════════════════════════════
+      # 15. YANK HISTORY
+      # ═══════════════════════════════════════════════════════════════
+      utility.yanky-nvim.enable = true;
+
+      # ═══════════════════════════════════════════════════════════════
+      # 16. UI ENHANCEMENTS
+      # ═══════════════════════════════════════════════════════════════
       ui = {
         noice.enable = true;
         borders.enable = true;
         illuminate.enable = true;
+        colorizer.enable = true;
       };
 
-      # ── Notifications ──
       notify.nvim-notify.enable = true;
 
-      # ── Notes / Todos ──
+      # ═══════════════════════════════════════════════════════════════
+      # 17. NOTES & MARKDOWN
+      # ═══════════════════════════════════════════════════════════════
       notes.todo-comments.enable = true;
 
-      # ── Terminal ──
+      languages.markdown.extensions.render-markdown-nvim.enable = true;
+
+      # ═══════════════════════════════════════════════════════════════
+      # 18. TERMINAL
+      # ═══════════════════════════════════════════════════════════════
       terminal.toggleterm = {
         enable = true;
         lazygit.enable = true;
       };
 
-      # ── Motion ──
-      utility.motion = {
-        hop.enable = true;
-        leap.enable = true;
-      };
-
-      # ── Visuals ──
-      visuals = {
-        nvim-web-devicons.enable = true;
-        nvim-cursorline.enable = true;
-        fidget-nvim.enable = true;
-        highlight-undo.enable = true;
-        indent-blankline.enable = true;
-      };
-
-      # ── Languages ──
+      # ═══════════════════════════════════════════════════════════════
+      # 19. LANGUAGES — Keep ONLY what you use
+      # ═══════════════════════════════════════════════════════════════
       languages = {
         enableFormat = true;
         enableTreesitter = true;
@@ -174,11 +254,11 @@
         go.enable = true;
       };
 
-      # ── Keymaps ──
-      # NOTE: NVF keymaps use TOP-LEVEL attrs, NOT nested under `options`.
-      # Valid attrs per keymap: key, mode, action, desc, silent, nowait, expr, unique, remap, lua, buffer
+      # ═══════════════════════════════════════════════════════════════
+      # 20. KEYMAPS
+      # ═══════════════════════════════════════════════════════════════
       keymaps = [
-        # Telescope
+        # ── Telescope ──
         {
           key = "<leader>ff";
           mode = "n";
@@ -203,16 +283,34 @@
           action = "<cmd>Telescope help_tags<cr>";
           desc = "Help tags";
         }
+        {
+          key = "<leader>fr";
+          mode = "n";
+          action = "<cmd>Telescope oldfiles<cr>";
+          desc = "Recent files";
+        }
 
-        # File tree
+        # ── File Tree ──
         {
           key = "<leader>e";
           mode = "n";
           action = "<cmd>Neotree toggle<cr>";
-          desc = "Toggle file explorer";
+          desc = "Toggle neo-tree";
+        }
+        {
+          key = "<leader>E";
+          mode = "n";
+          action = "<cmd>lua MiniFiles.open()<cr>";
+          desc = "Open mini.files";
+        }
+        {
+          key = "<leader>o";
+          mode = "n";
+          action = "<cmd>Oil<cr>";
+          desc = "Open oil.nvim";
         }
 
-        # LSP
+        # ── LSP ──
         {
           key = "gd";
           mode = "n";
@@ -244,7 +342,7 @@
           desc = "Rename symbol";
         }
 
-        # Diagnostics
+        # ── Diagnostics ──
         {
           key = "<leader>xx";
           mode = "n";
@@ -264,7 +362,7 @@
           desc = "Prev diagnostic";
         }
 
-        # Buffers
+        # ── Buffers ──
         {
           key = "<S-h>";
           mode = "n";
@@ -284,12 +382,20 @@
           desc = "Delete buffer";
         }
 
-        # Git (lazygit via toggleterm)
+        # ── Git ──
         {
           key = "<leader>gg";
           mode = "n";
           action = "<cmd>lua require('toggleterm.terminal').Terminal:new({cmd='lazygit',direction='float'}):toggle()<cr>";
           desc = "Lazygit";
+        }
+
+        # ── Utility ──
+        {
+          key = "<leader>ut";
+          mode = "n";
+          action = "<cmd>lua MiniTrailspace.trim()<cr>";
+          desc = "Trim trailing whitespace";
         }
       ];
     };
