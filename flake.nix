@@ -74,13 +74,13 @@
       };
       LT = mkHost {
         hostname = "rirdicalLT";
-        homehost = ./home/host/rirdicalLT.nix;
+        homehost = ./home/hosts/rirdicalLT.nix;
         user = "rirdical";
         system = "x86_64-linux";
       };
       VR = mkHost {
         hostname = "rirdicalVR";
-        homehost = ./home/host/rirdicalVR.nix;
+        homehost = ./home/hosts/rirdicalVR.nix;
         user = "rirdical";
         system = "aarch64-linux";
       };
