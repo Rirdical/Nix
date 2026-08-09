@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   imports =
     [ 
@@ -8,12 +7,11 @@
       ../common/base.nix
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   networking.hostName = "rirdicalLT"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -82,10 +80,7 @@
   services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
+  hardware.sensor.iio.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -94,18 +89,21 @@
     enable = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
   };
 
   services.happ.enable = true;
   programs.starship.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  # List packages installed in system profile.
+  # Packages
   environment.systemPackages = with pkgs; [
     lazygit
     nextcloud-client
     fzf
     zoxide
-    neovim
     yazi
     wget
     krita
@@ -115,25 +113,13 @@
     qt6Packages.qt6ct
     libsForQt5.qt5ct
     nwg-look
+    ghostty
+    gnomeExtensions.tweaks-in-system-menu
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
-  # List services that you want to enable:
+  services.openssh.enable = true;
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
   system.stateVersion = "26.05"; 
