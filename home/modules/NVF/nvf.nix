@@ -70,7 +70,7 @@ in
       theme = {
         enable = true;
         name = "base16";
-        base-colors = noctalia;
+        base16-colors = noctalia;
         transparent = true;
       };
 
