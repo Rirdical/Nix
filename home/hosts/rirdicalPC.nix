@@ -5,9 +5,11 @@
   inputs,
   ...
 }: {
-  home.username = "rirdical";
-  home.homeDirectory = "/home/rirdical";
-  home.stateVersion = "26.05"; # match your system's initial version
+  home = {
+    username = "rirdical";
+    homeDirectory = "/home/rirdical";
+    stateVersion = "26.05"; 
+  };
 
   imports = [
     ../modules/3Dfetch/fetch.nix
@@ -15,9 +17,6 @@
     ../modules/Dolphin/dolphin.nix
   ];
 
-  home.packages = with pkgs; [
-    ];
-  programs.git.enable = true;
   programs.home-manager.enable = true;
   home.sessionVariables = {
     EDITOR = "nvim";

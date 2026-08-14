@@ -69,12 +69,14 @@
   programs.starship.enable = true;
   users.defaultUserShell = pkgs.zsh;
   programs.steam.enable = true;
+  programs.git = {
+    enable = true;
+  };
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
     lazygit
     wget
-    git
     firefox
     vivaldi
     xwayland-satellite
@@ -82,7 +84,6 @@
     polkit_gnome
     nextcloud-client
     ghostty
-    kdePackages.dolphin
     qt6Packages.qt6ct
     libsForQt5.qt5ct
     fzf
@@ -94,8 +95,6 @@
     tango-icon-theme
     papirus-icon-theme
     paper-icon-theme
-    kdePackages.kio
-    kdePackages.kio-extras
     geeqie
     mpv
     rimsort
@@ -111,26 +110,10 @@
     zoxide
     easyeffects
     ffmpeg
-    kdePackages.ffmpegthumbs
     ffmpegthumbnailer
     ffmpeg-headless
-    kdePackages.kdegraphics-thumbnailers
-    kdePackages.qtimageformats
-    kdePackages.kimageformats
-    kdepackages.qtbase 
+    kdePackages.qtbase 
   ];
-
-  # Fix for Dolphin open with
-  xdg.menus.enable = true;
-  xdg.mime.enable = true;
-  environment.etc."/xdg/menus/applications.menu".text =
-    builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
-
-  environment.sessionVariables = {
-    QT_PLUGIN_PATH = [
-      "/run/current-system/sw/lib/qt-6/plugins"
-    ];
-  };
 
   environment.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt6ct";
