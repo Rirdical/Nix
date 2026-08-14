@@ -26,6 +26,11 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Yazi
+    yazi = {
+      url = "github:sxyazi/yazi";
+    };
   };
 
   outputs = {

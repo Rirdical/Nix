@@ -15,6 +15,7 @@
     ../modules/3Dfetch/fetch.nix
     ../modules/NVF/nvf.nix
     ../modules/Dolphin/dolphin.nix
+    ../modules/Yazi/yazi.nix
   ];
 
   programs.home-manager.enable = true;

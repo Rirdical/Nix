@@ -76,6 +76,7 @@ in {
       "networkmanager"
       "wheel"
       "docker"
+      "disk"
     ];
     shell = pkgs.zsh;
   };

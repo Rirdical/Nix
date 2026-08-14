@@ -28,7 +28,7 @@
     trustedInterfaces = ["tun0"];
   };
 
-  #
+  # nh idi nahui
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -72,6 +72,14 @@
   programs.git = {
     enable = true;
   };
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
+
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+  services.devmon.enable = true;
+  services.tumbler.enable = true;
+
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
@@ -95,7 +103,6 @@
     tango-icon-theme
     papirus-icon-theme
     paper-icon-theme
-    geeqie
     mpv
     rimsort
     kdePackages.ark
@@ -105,7 +112,6 @@
     discord
     btop
     gdu
-    eog
     fzf
     zoxide
     easyeffects
@@ -113,6 +119,10 @@
     ffmpegthumbnailer
     ffmpeg-headless
     kdePackages.qtbase 
+    webp-pixbuf-loader
+    xfce.tumbler
+    swayimg
+    nomacs
   ];
 
   environment.sessionVariables = {
@@ -128,7 +138,6 @@
   };
 
   programs.niri.enable = true;
-  programs.yazi.enable = true;
 
   services.displayManager.ly.enable = true;
 
