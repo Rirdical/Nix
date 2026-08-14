@@ -78,10 +78,8 @@
     firefox
     vivaldi
     xwayland-satellite
-    webcord
     amnezia-vpn
     polkit_gnome
-    webcord
     nextcloud-client
     ghostty
     kdePackages.dolphin
@@ -111,9 +109,11 @@
     eog
     fzf
     zoxide
-    thunar
-    nautilus
     easyeffects
+    ffmpeg
+    kdePackages.ffmpegthumbs
+    ffmpegthumbnailer
+    ffmpeg-headless
   ];
 
   # Fix for Dolphin open with

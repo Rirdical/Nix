@@ -11,57 +11,62 @@ in
 
     settings.vim = {
       # ═══════════════════════════════════════════════════════════════
-      # 0. VENDORED KEYMAPS — Disable NVF defaults to avoid conflicts
+      # 0. VENDORED KEYMAPS — Disable NVF defaults keymaps to avoid conflicts
       # ═══════════════════════════════════════════════════════════════
       vendoredKeymaps.enable = false;
 
       # ═══════════════════════════════════════════════════════════════
       # 1. CORE IDENTITY
       # ═══════════════════════════════════════════════════════════════
-      viAlias = true;
-      vimAlias = true;
+      viAlias = true;         # alias in shell for vi
+      vimAlias = true;        # alias in shell for vim
       globals = {
-        mapleader = " ";
-        editorconfig = true;
+        mapleader = " ";      # set <leader> key
+        editorconfig = true;  # Makes Neovim respect .editorconfig files in project roots
       };
 
       # ═══════════════════════════════════════════════════════════════
       # 2. EDITOR OPTIONS
       # ═══════════════════════════════════════════════════════════════
       options = {
-        number = true;
-        relativenumber = true;
-        tabstop = 2;
-        shiftwidth = 2;
-        expandtab = true;
-        autoindent = true;
-        smartindent = true;
-        termguicolors = true;
-        cursorline = true;
-        signcolumn = "yes";
-        laststatus = 3;
-        wrap = false;
-        scrolloff = 10;
-        sidescrolloff = 8;
-        ignorecase = true;
-        smartcase = true;
-        incsearch = true;
-        hidden = true;
-        undofile = true;
-        swapfile = false;
-        backup = false;
-        writebackup = false;
-        updatetime = 250;
-        timeoutlen = 300;
-        splitbelow = true;
-        splitright = true;
-        clipboard = "unnamedplus";
-        mouse = "a";
-        completeopt = "menu,menuone,noselect";
-        pumheight = 10;
-        showmode = false;
-        fillchars = "eob: ";
-        shada = "!,'100,<50,s10,h";
+        number = true;          # Shows absolute line numbers in the left gutter.
+        relativenumber = true;  # All lines except the current one show relative distance
+        tabstop = 2;            # visual width of a Tab character.
+        shiftwidth = 2;         # how many spaces
+        expandtab = true;       # Pressing <Tab> inserts spaces, not a real \t tab character.
+        autoindent = true;      # new line copies current indentation.
+        smartindent = true;     # new line copies current indentation.
+        termguicolors = true;   # Enables 24-bit true color. Required for themes to display millions of colors instead of 256.
+        cursorline = true;      # Highlights the entire horizontal line where your cursor sits.
+        signcolumn = "yes";     # The gutter left of line numbers is always visible, even when empty.
+        laststatus = 3;         # 3 = one global statusline at the bottom for the whole editor. 2 = one per split window.
+        wrap = false;           # Disables line wrapping. Long lines extend off-screen; you scroll horizontally.
+        scrolloff = 10;         # always keep 10 lines visible above/below cursor.
+        sidescrolloff = 8;      # keep 8 columns left/right when wrap is off.
+        ignorecase = true;      # /foo matches Foo and FOO
+        smartcase = true;       # if query has uppercase (/Foo), it becomes case-sensitive.
+        incsearch = true;       # Incremental search — jumps to and highlights matches as you type /pattern
+        hidden = true;          # Switch buffers without saving first. The buffer stays loaded in background.
+        undofile = true;        # Undo history is saved to disk (~/.local/share/nvim/undo/). Close Neovim, reopen later, still undo.
+        swapfile = false;       # Disables .swp
+        backup = false;         # disables baskup
+        writebackup = false;    # disables wwritebackup files
+        updatetime = 250;       # Milliseconds before CursorHold event triggers. Affects LSP hover, git blame, and plugin responsiveness.
+        timeoutlen = 300;       # Milliseconds Neovim waits for the next key in a sequence (e.g. <leader>f...). After this, the partial keymap is discarded.
+        splitbelow = true;      # :split opens below,
+        splitright = true;      # :vsplit opens right
+        clipboard = {
+          registers = "unnamedplus";
+          providers = {
+            wl-copy.enable = true;
+          };
+        };
+        mouse = "a";            # Mouse works in all modes: click to place cursor, drag to select, scroll, resize splits.
+        completeopt = "menu,menuone,noselect";  # Completion menu behavior: menu = show popup, menuone = show even for 1 match, noselect = don't auto-insert first item.
+        pumheight = 10;         # Popup menu height limit. Completion list shows max 10 items, then scrolls.
+        showmode = false;       # Hides the -- INSERT -- / -- VISUAL -- text at the bottom.
+        fillchars = "eob: ";    # Changes the ~ characters on empty lines after file end to spaces (invisible).
+        shada = "!,'100,<50,s10,h"; # Shared data (shada) config: ! = save global marks, '100 = save 100 file marks, <50 = save 50 lines of registers, s10 = max 10KB per item, h = disable hlsearch on startup.
       };
 
       # ═══════════════════════════════════════════════════════════════
@@ -156,14 +161,14 @@ in
       # ═══════════════════════════════════════════════════════════════
       # 5. FILE MANAGEMENT
       # ═══════════════════════════════════════════════════════════════
-      filetree.neo-tree.enable = true;
-      mini.files.enable = true;
-      utility.oil-nvim.enable = true;
+      filetree.neo-tree.enable = true; # enable neotree sidebar file tree
+      mini.files.enable = true;        # Column-based file browser. <leader>E opens it. Great for bulk renames
+      utility.oil-nvim.enable = true;  # Edit the filesystem like a text buffer. <leader>o opens the current directory. You dd a file to delete, yy to copy, edit a name to rename.
 
       # ═══════════════════════════════════════════════════════════════
       # 6. FUZZY FINDING
       # ═══════════════════════════════════════════════════════════════
-      telescope.enable = true;
+      telescope.enable = true;         # The fuzzy finder. Search files, grep text, list buffers, help tags.
 
       # ═══════════════════════════════════════════════════════════════
       # 7. TREESITTER
