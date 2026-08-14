@@ -12,6 +12,7 @@
   imports = [
     ../modules/3Dfetch/fetch.nix
     ../modules/NVF/nvf.nix
+    ../modules/Dolphin/dolphin.nix
   ];
 
   home.packages = with pkgs; [

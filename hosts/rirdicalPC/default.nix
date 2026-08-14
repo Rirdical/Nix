@@ -114,6 +114,10 @@
     kdePackages.ffmpegthumbs
     ffmpegthumbnailer
     ffmpeg-headless
+    kdePackages.kdegraphics-thumbnailers
+    kdePackages.qtimageformats
+    kdePackages.kimageformats
+    kdepackages.qtbase 
   ];
 
   # Fix for Dolphin open with
@@ -121,6 +125,12 @@
   xdg.mime.enable = true;
   environment.etc."/xdg/menus/applications.menu".text =
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
+  environment.sessionVariables = {
+    QT_PLUGIN_PATH = [
+      "/run/current-system/sw/lib/qt-6/plugins"
+    ];
+  };
 
   environment.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt6ct";
