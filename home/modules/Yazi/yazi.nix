@@ -3,10 +3,10 @@
 
 {
   imports = [
-    ./yazi/settings.nix
-    ./yazi/keymap.nix
-    ./yazi/theme.nix
-    ./yazi/plugins.nix
+    ./settings.nix
+    ./keymap.nix
+    ./theme.nix
+    ./plugins.nix
   ];
 
   programs.yazi = {
