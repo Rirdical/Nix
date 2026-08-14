@@ -1,18 +1,30 @@
+# Main Yazi configuration — imports all modular pieces
 { pkgs, inputs, ... }:
 
 {
+  imports = [
+    ./yazi/settings.nix
+    ./yazi/keymap.nix
+    ./yazi/theme.nix
+    ./yazi/plugins.nix
+  ];
+
   programs.yazi = {
     enable = true;
-    
-    # Force bleeding-edge package from upstream flake
     package = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    
-    # Shell wrapper so `y` launches yazi and cd's on quit
-    enableZshIntegration = true;  # or enableBashIntegration
+    enableZshIntegration = true;
     shellWrapperName = "y";
   };
 
+  # Dependencies used by plugins and yazi itself
   home.packages = with pkgs; [
-    ripdrag  # Required for drag-and-drop plugin
+    ripdrag      # drag.yazi backend
+    fd           # faster find
+    ripgrep      # grep
+    fzf          # fuzzy finder
+    zoxide       # smarter cd
+    file         # file type detection
+    p7zip        # archive preview
+    jq           # json preview
   ];
 }
