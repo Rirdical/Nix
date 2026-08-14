@@ -14,7 +14,8 @@
     ../modules/NVF/nvf.nix
   ];
 
-  home.packages = with pkgs; [htop git];
+  home.packages = with pkgs; [
+    ];
   programs.git.enable = true;
   programs.home-manager.enable = true;
   home.sessionVariables = {

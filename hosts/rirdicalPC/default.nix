@@ -111,6 +111,9 @@
     eog
     fzf
     zoxide
+    thunar
+    nautilus
+    easyeffects
   ];
 
   # Fix for Dolphin open with

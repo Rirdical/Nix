@@ -195,7 +195,29 @@ in
       autocomplete = {
         blink-cmp = {
           enable = true;
-          setupOpts.signature.enabled = true;
+          friendly-snippets.enable = true;
+          mappings = {
+            complete = null;
+            close = null;
+            scrollDocsUp = null;
+            scrollDocsDown = null;
+            confirm = null;
+            next = null;
+            previous = null;
+          };
+          setupOpts = {
+            signature.enabled = true;
+            keymap = {
+              "<Tab>" = ["select_next" "snippet_forward" "fallback"];
+              "<S-Tab>" = ["select_prev" "snippet_backward" "fallback"];
+              "<CR>" = ["accept" "fallback"];
+              "<C-y>" = ["select_and_accept" "fallback"];
+              "<C-e>" = ["hide" "fallback"];
+              "<C-space>" = ["show" "fallback"];
+              "<C-d>" = ["scroll_documentation_up" "fallback"];
+              "<C-f>" = ["scroll_documentation_down" "fallback"];
+            };
+          };
         };
         nvim-cmp.enable = false;
       };
