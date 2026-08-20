@@ -40,7 +40,8 @@
     home-manager,
     nvf,
     ...
-  } @ inputs: let
+  } @ inputs: 
+  let
     mkHost = {
       hostname,
       homehost,
@@ -57,11 +58,13 @@
           # Home manager
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "hm-back";
-            home-manager.overwriteBackup = true;
-            home-manager.extraSpecialArgs = {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "hm-back";
+              overwriteBackup = true;
+            };
+            extraSpecialArgs = {
               inherit inputs hostname;
             };
             home-manager.users = {
