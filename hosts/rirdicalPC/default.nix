@@ -123,6 +123,7 @@
     xfce.tumbler
     swayimg
     nomacs
+    bat
   ];
 
   environment.sessionVariables = {
