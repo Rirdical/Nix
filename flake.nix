@@ -63,9 +63,9 @@
               useUserPackages = true;
               backupFileExtension = "hm-back";
               overwriteBackup = true;
-            };
-            extraSpecialArgs = {
-              inherit inputs hostname;
+              extraSpecialArgs = {
+                inherit inputs hostname;
+              };
             };
             home-manager.users = {
               "${user}" = import homehost;

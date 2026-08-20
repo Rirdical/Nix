@@ -124,6 +124,7 @@
     swayimg
     nomacs
     bat
+    lmstudio
   ];
 
   environment.sessionVariables = {
