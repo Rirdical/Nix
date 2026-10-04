@@ -38,6 +38,11 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #Happ
+    happ-nixos = {
+      url = "github:Rirdical/happ-nixos";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -46,6 +51,7 @@
     nixpkgs,
     home-manager,
     nvf,
+    happ-nixos,
     ...
   } @ inputs: let
     mkHost = {
@@ -60,6 +66,7 @@
 
         modules = [
           ./hosts/${hostname}
+          "${happ-nixos}/happ-module.nix"
           stylix.nixosModules.stylix
           ({pkgs, ...}: {
             environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.nvf];

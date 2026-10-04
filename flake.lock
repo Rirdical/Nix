@@ -194,6 +194,22 @@
         "type": "gitlab"
       }
     },
+    "happ-nixos": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791123496,
+        "narHash": "sha256-TH2PLmoAoLYR8CNcgPvHsr9dssanx89Odo+FGv07tbY=",
+        "owner": "Rirdical",
+        "repo": "happ-nixos",
+        "rev": "7cd59885ca3d6b77ce5cb30a5e4e0c71a2f7664f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Rirdical",
+        "repo": "happ-nixos",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -337,6 +353,7 @@
     "root": {
       "inputs": {
         "areofyl-fetch": "areofyl-fetch",
+        "happ-nixos": "happ-nixos",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",

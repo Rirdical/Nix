@@ -8,7 +8,7 @@
   imports = [
     inputs.noctalia.nixosModules.default
     ./hardware-configuration.nix
-    ../../misc/happ-nixos/happ-module.nix
+    # ../../misc/happ-nixos/happ-module.nix
     ../common/base.nix
     ../modules/Ly/ly.nix
   ];
