@@ -99,6 +99,8 @@
       thunar-archive-plugin
     ];
   };
+  programs.niri.enable = true;
+  programs.xwayland.enable = true;
   programs.xfconf.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -180,6 +182,10 @@
     p7zip # archive preview
     jq # json preview
     localsend
+    exfatprogs
+    usbutils
+    wireguard-tools
+    xwayland-satellite
   ];
 
   # Nix settings
