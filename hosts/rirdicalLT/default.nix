@@ -1,11 +1,13 @@
-{ config, inputs, pkgs, ... }:
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ../../misc/happ-nixos/happ-module.nix
-      ../common/base.nix
-    ];
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ../common/base.nix
+  ];
 
   boot = {
     loader.systemd-boot.enable = true;
@@ -14,17 +16,14 @@
   };
 
   networking.hostName = "rirdicalLT"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   # Enable networking
   networking.networkmanager.enable = true;
-
   # Fingerprint settings
   services.fwupd.enable = true;
   services.fprintd.enable = true;
-  services.desktopManager.gnome.sessionPath = [ pkgs.gdm ];
+  services.desktopManager.gnome.sessionPath = [pkgs.gdm];
   security.pam.services.sudo.fprintAuth = true;
-  
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Set your time zone.
   time.timeZone = "Europe/Samara";
@@ -47,9 +46,12 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  # Enable the Plasma Desktop Environment.
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -68,12 +70,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -122,13 +118,14 @@
     gnomeExtensions.tweaks-in-system-menu
     gnome-tweaks
     gnome-extension-manager
+    fwupd
+    libinput
+    libinput-utils
   ];
-
 
   services.openssh.enable = true;
 
   # networking.firewall.enable = false;
 
-  system.stateVersion = "26.05"; 
-
+  system.stateVersion = "26.05";
 }

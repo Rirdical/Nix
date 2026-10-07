@@ -11,7 +11,6 @@
 
   imports = [
     ../modules/3Dfetch/fetch.nix
-    ../modules/NVF/nvf.nix
     ../modules/Yazi/yazi.nix
   ];
 
