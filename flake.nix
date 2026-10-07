@@ -68,9 +68,7 @@
           ./hosts/${hostname}
           "${happ-nixos}/happ-module.nix"
           stylix.nixosModules.stylix
-          ({pkgs, ...}: {
-            environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.nvf];
-          })
+          ({pkgs, ...}: {environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.nvf];})
           home-manager.nixosModules.home-manager
           {
             home-manager = {

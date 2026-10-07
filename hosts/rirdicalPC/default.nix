@@ -8,26 +8,11 @@
   imports = [
     inputs.noctalia.nixosModules.default
     ./hardware-configuration.nix
-    # ../../misc/happ-nixos/happ-module.nix
     ../common/base.nix
     ../modules/Ly/ly.nix
   ];
 
-  # Bootloader configuration and kernel
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Networking
-  networking.nameservers = ["94.140.14.14" "9.9.9.9"]; # AdGuard and Quad9
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-  networking.networkmanager.unmanaged = ["tun0"];
   networking.hostName = "rirdicalPC"; # Define your hostname.
-  networking.networkmanager.enable = true;
-  networking.firewall = {
-    enable = false;
-    trustedInterfaces = ["tun0"];
-  };
 
   #Stylix
   stylix = {
@@ -58,20 +43,10 @@
     base0F = "#910017"; # error_container — Deprecated, Embedded Tags
   };
 
-  # Set your time zone.
-  time.timeZone = "Europe/Samara";
-
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
 
-  # Internationalisation
-  services.xserver.xkb.layout = "us, ru";
-
-  users.users.rirdical = {
-    isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "audio" "video"]; # Enable ‘sudo’ for the user.
-  };
   # Apps
   programs.noctalia = {
     enable = true;
@@ -88,7 +63,6 @@
     syntaxHighlighting.enable = true;
   };
   programs.starship.enable = true;
-  users.defaultUserShell = pkgs.zsh;
   programs.steam.enable = true;
   programs.git = {
     enable = true;
@@ -115,12 +89,6 @@
   };
   programs.gamemode.enable = true;
   security.polkit.enable = true;
-  programs.xwayland.enable = true;
-  programs.niri.enable = true;
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
@@ -187,10 +155,6 @@
     wireguard-tools
     xwayland-satellite
   ];
-
-  # Nix settings
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   system.stateVersion = "26.05"; # Did you read the comment?
 }

@@ -17,6 +17,7 @@
   boot.supportedFilesystems = ["exfat"];
 
   time.timeZone = "Europe/Samara";
+  services.xserver.xkb.layout = "us, ru";
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
