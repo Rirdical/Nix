@@ -50,7 +50,7 @@
 
   # Enable the Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
+  services.displayManager.plasma-login-manager.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
