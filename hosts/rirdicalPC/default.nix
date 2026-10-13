@@ -101,7 +101,6 @@
     docker-compose
     lazygit
     wget
-    vivaldi
     xwayland-satellite
     polkit_gnome
     nextcloud-client
@@ -154,6 +153,7 @@
     usbutils
     wireguard-tools
     xwayland-satellite
+    herdr
   ];
 
   system.stateVersion = "26.05"; # Did you read the comment?
