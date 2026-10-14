@@ -77,6 +77,7 @@
   services.happ.enable = true;
   programs.starship.enable = true;
   services.openssh.enable = true;
+  services.tailscale.enable = true;
 
   # Packages
   environment.systemPackages = with pkgs; [
@@ -102,6 +103,8 @@
     fwupd
     libinput
     herdr
+    onlyoffice-desktopeditors
+    tailscale
   ];
 
   system.stateVersion = "26.05";
