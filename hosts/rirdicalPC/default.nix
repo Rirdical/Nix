@@ -109,7 +109,6 @@
     libsForQt5.qt5ct
     mpv
     # rimsort
-    kdePackages.ark
     adwaita-icon-theme
     mate-icon-theme
     tango-icon-theme
@@ -156,6 +155,7 @@
     herdr
     telegram-desktop
     vivaldi
+    peazip
   ];
 
   system.stateVersion = "26.05"; # Did you read the comment?
