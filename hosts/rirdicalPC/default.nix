@@ -82,6 +82,7 @@
   services.tumbler.enable = true;
   services.flatpak.enable = true;
   services.openssh.enable = true;
+  programs.appimage.enable = true;
   virtualisation.docker.enable = true;
   programs.gamescope = {
     enable = true;
