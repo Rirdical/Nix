@@ -146,7 +146,6 @@
     fzf # fuzzy finder
     zoxide # smarter cd
     file # file type detection
-    p7zip # archive preview
     jq # json preview
     localsend
     exfatprogs
@@ -156,7 +155,10 @@
     herdr
     telegram-desktop
     vivaldi
-    peazip
+    xarchiver
+    p7zip
+    unzip
+    zip
   ];
 
   system.stateVersion = "26.05"; # Did you read the comment?
