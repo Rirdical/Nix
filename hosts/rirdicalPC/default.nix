@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     ../common/base.nix
     ../modules/Ly/ly.nix
-    (modulesPath + "/virtualization/build-vm.nix")
+    (modulesPath + "/virtualisation/build-vm.nix")
   ];
 
   networking.hostName = "rirdicalPC"; # Define your hostname.
