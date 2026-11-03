@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  modulesPath,
   ...
 }: {
   imports = [
@@ -9,7 +8,6 @@
     ./hardware-configuration.nix
     ../common/base.nix
     ../modules/Ly/ly.nix
-    (modulesPath + "/virtualisation/build-vm.nix")
   ];
 
   networking.hostName = "rirdicalPC"; # Define your hostname.
