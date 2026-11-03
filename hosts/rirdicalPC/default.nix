@@ -1,8 +1,7 @@
 {
-  config,
-  lib,
   pkgs,
   inputs,
+  modulesPath,
   ...
 }: {
   imports = [
@@ -10,6 +9,7 @@
     ./hardware-configuration.nix
     ../common/base.nix
     ../modules/Ly/ly.nix
+    (modulesPath + "/virtualization/build-vm.nix")
   ];
 
   networking.hostName = "rirdicalPC"; # Define your hostname.
@@ -91,6 +91,12 @@
   programs.gamemode.enable = true;
   security.polkit.enable = true;
 
+  services.open-webui = {
+    enable = true;
+    host = "127.0.0.1";
+    port = 6767;
+  };
+
   # System-wide packages
   environment.systemPackages = with pkgs; [
     wine64Packages.stableFull
@@ -155,10 +161,11 @@
     herdr
     telegram-desktop
     vivaldi
-    xarchiver
+    # xarchiver
     p7zip
     unzip
     zip
+    kdePackages.ark
   ];
 
   system.stateVersion = "26.05"; # Did you read the comment?
