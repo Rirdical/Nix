@@ -82,6 +82,7 @@
   services.openssh.enable = true;
   programs.appimage.enable = true;
   virtualisation.docker.enable = true;
+  services.xserver.videoDriver = ["amdgpu"];
   programs.gamescope = {
     enable = true;
     capSysNice = true;
