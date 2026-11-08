@@ -5,6 +5,7 @@
 }: {
   imports = [
     inputs.noctalia.nixosModules.default
+    inputs.juhradial-mx.nixosModules.default
     ./hardware-configuration.nix
     ../common/base.nix
     ../modules/Ly/ly.nix
@@ -83,6 +84,7 @@
   programs.appimage.enable = true;
   virtualisation.docker.enable = true;
   services.xserver.videoDriver = ["amdgpu"];
+  services.juhradial-mx.enable = true;
   programs.gamescope = {
     enable = true;
     capSysNice = true;
@@ -165,7 +167,6 @@
     unzip
     zip
     kdePackages.ark
-    nemo
   ];
 
   system.stateVersion = "26.05"; # Did you read the comment?

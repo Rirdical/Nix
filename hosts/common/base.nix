@@ -43,6 +43,7 @@
     description = "";
     extraGroups = [
       "video"
+      "input"
       "render"
       "networkmanager"
       "wheel"

@@ -43,6 +43,8 @@
       url = "github:Rirdical/happ-nixos";
       flake = false;
     };
+    # MX Master 4 Software
+    juhradial-mx.url = "github:JuhLabs/juhradial-mx";
   };
 
   outputs = {
