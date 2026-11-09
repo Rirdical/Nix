@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    inputs.nixcord.nixosModules.nixcord
     inputs.noctalia.nixosModules.default
     inputs.juhradial-mx.nixosModules.default
     ./hardware-configuration.nix
@@ -28,6 +29,12 @@
   };
 
   # Apps
+  programs.nixcord = {
+    enable = true;
+    user = "Rirdical";
+    discord.vencord.enable = true;
+    config.plugins.hideMedia.enable = true;
+  };
   programs.noctalia = {
     enable = true;
     recommendedServices.enable = true;
@@ -77,7 +84,7 @@
   services.open-webui = {
     enable = true;
     host = "127.0.0.1";
-    port = 6767;
+    port = 7676;
   };
 
   # System-wide packages
@@ -107,7 +114,7 @@
     nwg-look
     adw-gtk3
     obsidian
-    discord
+    # discord
     btop
     gdu
     easyeffects

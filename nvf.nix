@@ -12,8 +12,6 @@
   pkgs,
   ...
 }: {
-  # imports = [./noctalia-theme.nix];
-
   vim = {
     viAlias = true;
     vimAlias = true;

@@ -55,13 +55,19 @@
   };
 
   fonts.packages = with pkgs; [
-    nerd-fonts.droid-sans-mono
-    nerd-fonts.symbols-only
-    nerd-fonts.bigblue-terminal
-    nerd-fonts.heavy-data
-    nerd-fonts.hurmit
-    roboto
+    nerd-fonts.jetbrains-mono
+    # nerd-fonts.droid-sans-mono
+    # nerd-fonts.symbols-only
+    # nerd-fonts.bigblue-terminal
+    # nerd-fonts.heavy-data
+    # nerd-fonts.hurmit
+    # roboto
   ];
+  fonts.fontconfig.defaultFonts = {
+    monospace = [
+      "JetBrainsMono Nerd Font"
+    ];
+  };
 
   nixpkgs.config.allowUnfree = true;
 

@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  ...
-}: {
+{...}: {
   home = {
     username = "rirdical";
     homeDirectory = "/home/rirdical";
@@ -26,7 +20,6 @@
       obsidian.enable = true;
       noctalia.enable = true;
       nixos-icons.enable = true;
-      # nvf.enable = true;
       mpv.enable = true;
       lazygit.enable = true;
       ghostty.enable = true;

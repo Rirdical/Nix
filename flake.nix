@@ -45,6 +45,11 @@
     };
     # MX Master 4 Software
     juhradial-mx.url = "github:JuhLabs/juhradial-mx";
+    # Nixcord
+    nixcord = {
+      url = "github:4evy/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
