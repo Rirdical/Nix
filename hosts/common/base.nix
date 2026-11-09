@@ -42,6 +42,7 @@
     isNormalUser = true;
     description = "";
     extraGroups = [
+      "ydotool"
       "video"
       "input"
       "render"

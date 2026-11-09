@@ -200,7 +200,7 @@
       formatOnSave = true;
       lightbulb.enable = true;
       trouble.enable = true; # nicer diagnostics / references list
-      presets.nixd.enable = true;
+      # presets.nixd.enable = true;
       # lspSignature stays off: blink-cmp ships its own signature help
     };
 
@@ -233,7 +233,7 @@
       enableDAP = true;
 
       # Everyday set
-      nix.enable = true;
+      # nix.enable = true;
       markdown.enable = true;
       bash.enable = true;
       lua.enable = true;
@@ -297,8 +297,8 @@
     # ────────────────────────────────────────────────────────────────────
     theme = {
       enable = true;
-      name = "catppuccin"; # also: tokyonight, gruvbox, onedark, dracula, rose-pine, ...
-      style = "mocha";
+      name = "tokyonight"; # also: tokyonight, gruvbox, onedark, dracula, rose-pine, ...
+      # style = "mocha";
       transparent = true;
     };
 
