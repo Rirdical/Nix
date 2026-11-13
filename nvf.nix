@@ -1,12 +1,3 @@
-# nvf.nix — universal, general-purpose Neovim config for NVF
-# https://github.com/NotAShelf/nvf
-#
-# Works as a plain nvf module (see flake.nix) or under Home Manager / NixOS:
-#   programs.nvf.settings = import ./nvf.nix { inherit lib pkgs; };
-#
-# Option names were checked against nvf's current `main` sample configuration.
-# nvf evolves quickly: if an option errors after an update, check the release
-# notes (https://notashelf.github.io/nvf/release-notes.html) for renames.
 {
   lib,
   pkgs,
@@ -302,8 +293,26 @@
     # ────────────────────────────────────────────────────────────────────
     theme = {
       enable = true;
-      name = "tokyonight"; # also: tokyonight, gruvbox, onedark, dracula, rose-pine, ...
-      style = "night";
+      # name = "base16"; # also: tokyonight, gruvbox, onedark, dracula, rose-pine, ...
+      # # style = "night";
+      # base16-colors = {
+      #   base00 = "#212337"; # Background
+      #   base01 = "#323449";
+      #   base02 = "#3b4261";
+      #   base03 = "#7081d0";
+      #   base04 = "#a1abe0";
+      #   base05 = "#ebfafa"; # Foreground
+      #   base06 = "#f0f2f4";
+      #   base07 = "#ffffff";
+      #   base08 = "#f16c75"; # Red
+      #   base09 = "#f7c67f"; # Orange
+      #   base0A = "#f1fc79"; # Yellow
+      #   base0B = "#37f499"; # Green
+      #   base0C = "#04d1f9"; # Cyan
+      #   base0D = "#39ddfd"; # Blue
+      #   base0E = "#a48cf2"; # Purple
+      #   base0F = "#f265b5";
+      # };
       transparent = true;
     };
 

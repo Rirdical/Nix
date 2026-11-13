@@ -17,7 +17,8 @@
   #Stylix
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/eldritch.yaml";
     targets = {
       gtk.enable = true;
       qt.enable = true;
@@ -60,6 +61,13 @@
       thunar-archive-plugin
     ];
   };
+  programs.dconf = {
+    enable = true;
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  };
   programs.niri.enable = true;
   programs.xwayland.enable = true;
   programs.xfconf.enable = true;
@@ -94,7 +102,7 @@
     lutris
     herdr
     protontricks
-    inputs.zen-browser.packages.${system}.default
+    # inputs.zen-browser.packages.${system}.default
     docker-compose
     lazygit
     wget
@@ -135,7 +143,7 @@
     rocmPackages.rocm-smi
     radeontop
     amnezia-vpn
-    yazi
+    # yazi
     ripdrag # drag.yazi backend
     fd # faster find
     ripgrep # grep
@@ -156,6 +164,8 @@
     unzip
     zip
     kdePackages.ark
+    vimhjkl
+    kitty
   ];
 
   system.stateVersion = "26.05"; # Did you read the comment?
